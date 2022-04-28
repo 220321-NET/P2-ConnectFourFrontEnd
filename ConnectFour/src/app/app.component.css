@@ -1,0 +1,29 @@
+img {
+    width: 300px;
+    padding-top: 100px;
+    padding-bottom: 25px;
+}
+
+.help {
+    align-self: center;
+}
+
+button {
+    margin: 5px;
+    align-self: center;
+}
+
+.center {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    padding: 10px;
+}
+
+.button-group {
+    align-items: center;
+    left: 50%;
+    top: 50%;
+    padding: 10px;
+}
