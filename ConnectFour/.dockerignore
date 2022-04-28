@@ -1,0 +1,9 @@
+logs/
+.vs
+.vscode
+**/bin/
+**/obj/
+publish/
+node_modules
+.git
+.gitignore
