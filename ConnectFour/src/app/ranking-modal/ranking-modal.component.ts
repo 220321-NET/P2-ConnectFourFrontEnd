@@ -7,8 +7,8 @@ import { MdbModalRef } from 'mdb-angular-ui-kit/modal';
   templateUrl: './ranking-modal.component.html',
   styleUrls: ['./ranking-modal.component.css']
 })
-export class RankingModalComponent{
+export class RankingModalComponent {
 
-  constructor(public modalRef: MdbModalRef<RankingModalComponent>) {}
+  constructor(public modalRef: MdbModalRef<RankingModalComponent>) { }
 
 }
