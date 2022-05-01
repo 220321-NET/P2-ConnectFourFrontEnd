@@ -1,0 +1,45 @@
+<div class="container">
+  <h1 class="d-flex justify-content-center mt-5 mb-3 text-warning">Connect 4 Leaderboard</h1>
+  <div class="card bg-info border rounded-3">
+    <div class="card-body border border-5 rounded-2 border-warning">
+      <table class="text-warning table table-responsive table-hover">
+        <caption class="h5">Rankings for every player</caption>
+        <thead class="border border-5 border-warning">
+          <tr class="h2">
+            <th scope="col">Rank</th>
+            <th scope="col">Name</th>
+            <th scope="col">Rating</th>
+          </tr>
+        </thead>
+        <tbody class="h3">
+          <!-- Add each Player's rank via GET request -->
+          <tr class="border-3 border-end-0 border-start-0 border-warning" (click)="openRankingModal()">
+            <th scope="row">#1</th>
+            <td><img src="https://s.gravatar.com/avatar/24906c8e5a8e02463f6ea9411285d78b?s=80" style="width: 29pt;" class="rounded-circle"/> Bailey911</td>
+            <td>871</td>
+          </tr>
+          <tr class="border-3 border-end-0 border-start-0 border-warning">
+            <th scope="row">#2</th>
+            <td><img src="https://s.gravatar.com/avatar/24906c8e5a8e02463f6ea9411285d78b?s=80" style="width: 29pt;" class="rounded-circle"/> BobbySoy</td>
+            <td>821</td>
+          </tr>
+          <tr class="border-3 border-end-0 border-start-0 border-warning">
+            <th scope="row">#3</th>
+            <td><img src="https://s.gravatar.com/avatar/24906c8e5a8e02463f6ea9411285d78b?s=80" style="width: 29pt;" class="rounded-circle"/> Naruto</td>
+            <td>788</td>
+          </tr>
+          <tr class="border-3 border-end-0 border-start-0 border-warning">
+            <th scope="row">#4</th>
+            <td><img src="https://s.gravatar.com/avatar/24906c8e5a8e02463f6ea9411285d78b?s=80" style="width: 29pt;" class="rounded-circle"/> Tanjiro</td>
+            <td>765</td>
+          </tr>
+          <tr class="border-3 border-end-0 border-start-0 border-warning">
+            <th scope="row">#5</th>
+            <td><img src="https://s.gravatar.com/avatar/24906c8e5a8e02463f6ea9411285d78b?s=80" style="width: 29pt;" class="rounded-circle"/> Kyogre</td>
+            <td>723</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
