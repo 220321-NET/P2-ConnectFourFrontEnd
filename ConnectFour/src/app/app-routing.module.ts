@@ -1,8 +1,12 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { HomeComponent } from './home/home.component';
+import { LeaderboardComponent } from './leaderboard/leaderboard.component';
 import { LoginComponent } from './login/login.component';
 import { MainComponent } from './main/main.component';
 import { SignupComponent } from './signup/signup.component';
+import { RankingModalComponent } from './ranking-modal/ranking-modal.component';
+import { SettingsComponent } from './settings/settings.component';
 
 const routes: Routes = [
   {
@@ -16,6 +20,22 @@ const routes: Routes = [
   {
     path: 'signup',
     component: SignupComponent
+  },
+  {
+    path: 'home',
+    component: HomeComponent
+  },
+  {
+    path: 'rank',
+    component: RankingModalComponent
+  },
+  {
+    path: 'leaderboard',
+    component: LeaderboardComponent
+  },
+  {
+    path: 'settings',
+    component: SettingsComponent
   }
 ];
 
