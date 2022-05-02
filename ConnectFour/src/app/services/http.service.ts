@@ -11,7 +11,7 @@ export class HttpService {
   constructor(private http: HttpClient) { }
 
   getPlayer(username: string): Observable<any> {
-    return this.http.get('https://connectfourapi.azurewebsites.net/GetPlayer/${username}');
+    return this.http.get('https://connectfourapi.azurewebsites.net/Player/GetPlayer/${username}');
   }
 
   addPlayer(p: Partial<player>): Observable<any> {
