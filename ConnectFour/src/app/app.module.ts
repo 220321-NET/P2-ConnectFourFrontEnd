@@ -11,6 +11,8 @@ import { HomeComponent } from './home/home.component';
 import { NavbarComponent } from './navbar/navbar.component';
 import { MainComponent } from './main/main.component';
 import { SettingsComponent } from './settings/settings.component';
+import { FormsModule } from '@angular/forms';
+import { HttpClientModule } from '@angular/common/http';
 import { LobbyComponent } from './lobby/lobby.component';
 import { BoardComponent } from './board/board.component';
 
@@ -31,7 +33,9 @@ import { BoardComponent } from './board/board.component';
   imports: [
     BrowserModule,
     AppRoutingModule,
-    MdbModalModule
+    MdbModalModule,
+    FormsModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]
