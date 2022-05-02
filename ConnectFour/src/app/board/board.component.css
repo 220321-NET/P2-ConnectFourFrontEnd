@@ -1,6 +1,19 @@
-div.transbox {
+.transbox {
+    padding: 10px;
     margin: 30px;
     background-color: #ffffff;
     border: 1px solid black;
     opacity: 0.6;
-  }
+}
+.background {
+    background: url(https://media1.thehungryjpeg.com/thumbs/800_3497898_c18e9c3d259fa39144069ce250402beabefa92e7.jpg);
+    border: 50px solid black;
+}
+
+.board{
+    width: 100%;
+
+}
+
+h1 {text-align: center;}
+li {text-align: left;}
