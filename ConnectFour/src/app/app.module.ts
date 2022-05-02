@@ -15,6 +15,7 @@ import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { LobbyComponent } from './lobby/lobby.component';
 import { BoardComponent } from './board/board.component';
+import { PieceComponent } from './piece/piece.component';
 
 @NgModule({
   declarations: [
@@ -28,7 +29,8 @@ import { BoardComponent } from './board/board.component';
     MainComponent,
     SettingsComponent,
     LobbyComponent,
-    BoardComponent
+    BoardComponent,
+    PieceComponent
   ],
   imports: [
     BrowserModule,
