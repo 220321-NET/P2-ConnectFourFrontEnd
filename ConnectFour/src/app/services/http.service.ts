@@ -15,6 +15,6 @@ export class HttpService {
   }
 
   addPlayer(p: Partial<player>): Observable<any> {
-    return this.http.post('https://connectfourapi.azurewebsites.net/AddPlayer', p);
+    return this.http.post('https://connectfourapi.azurewebsites.net/Player/AddPlayer', p);
   }
 }
