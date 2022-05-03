@@ -13,6 +13,8 @@ import { MainComponent } from './main/main.component';
 import { SettingsComponent } from './settings/settings.component';
 import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
+import { AuthModule } from './auth/auth.module';
+import { RouterModule } from '@angular/router';
 
 @NgModule({
   declarations: [
@@ -31,7 +33,9 @@ import { HttpClientModule } from '@angular/common/http';
     AppRoutingModule,
     MdbModalModule,
     FormsModule,
-    HttpClientModule
+    HttpClientModule,
+    RouterModule,
+    AuthModule
   ],
   providers: [],
   bootstrap: [AppComponent]
