@@ -11,10 +11,12 @@ export class HttpService {
   constructor(private http: HttpClient) { }
 
   getPlayer(username: string): Observable<any> {
-    return this.http.get('https://connectfourapi.azurewebsites.net/Player/GetPlayer/${username}');
+    return this.http.get(`https://connectfourapi.azurewebsites.net/Player/GetPlayer/${username}`);
+    // return this.http.get(`https://localhost:7132/Player/GetPlayer/${username}`);
   }
 
   addPlayer(p: Partial<player>): Observable<any> {
     return this.http.post('https://connectfourapi.azurewebsites.net/Player/AddPlayer', p);
+    // return this.http.post('https://localhost:7132/Player/AddPlayer', p);
   }
 }
