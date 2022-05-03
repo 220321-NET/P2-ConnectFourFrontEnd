@@ -12,14 +12,14 @@ export class SignupComponent implements OnInit {
 
   passwordConfirm: string = '';
 
-  Player: player = {
-    PlayerID: -1,
+  newPlayer: player = {
+    PlayerID: 0,
     Email: '',
     Username: '',
     Password: '',
-    Wins: -1,
-    Losses: -1,
-    Ties: -1
+    Wins: 0,
+    Losses: 0,
+    Ties: 0
   }
 
   constructor(private api: HttpService, private router: Router) { }
@@ -28,7 +28,7 @@ export class SignupComponent implements OnInit {
   }
 
   submitForm() {
-    this.api.addPlayer(this.Player).subscribe((res) => {
+    this.api.addPlayer(this.newPlayer).subscribe((res) => {
       this.router.navigate(['home'])
     })
   }
