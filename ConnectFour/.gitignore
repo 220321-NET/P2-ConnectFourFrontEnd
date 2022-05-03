@@ -3,6 +3,9 @@
 ## Ignore VSCode
 .vscode
 
+## Ignore logs
+.log
+
 # Compiled output
 /dist
 /tmp
