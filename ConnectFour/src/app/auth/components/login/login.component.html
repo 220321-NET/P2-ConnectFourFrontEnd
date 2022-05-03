@@ -1,44 +1,27 @@
-<div class="row">
-  <div class="col-md-6 offset-md-3 mt-4">
-    <h3>Login</h3>
-    <form #f="ngForm" (ngSubmit)="onSubmit(f)">
-      <div class="mb-3">
-        <label for="loginUsername" class="form-label">Username</label>
-        <input
-          type="text"
-          name="username"
-          ngModel
-          required
-          #username="ngModel"
-          class="form-control"
-          id="loginUsername"
-          placeholder="Username"
-        />
-        <p>Username value: {{ username.value }}</p>
-        <p>Username valid: {{ username.valid }}</p>
-        <p>Username dirty: {{ username.dirty }}</p>
-        <p>Username touched: {{ username.touched }}</p>
-      </div>
-      <div class="mb-3">
-        <label for="loginPassword" class="form-label">Password</label>
-        <input
-          type="password"
-          input
-          name="password"
-          ngModel
-          required
-          #password="ngModel"
-          class="form-control"
-          id="loginPassword"
-          placeholder="Password"
-        />
-      </div>
-      <div class="mb-3 form-check">
-        <a [routerLink]="['resetpassword']">Forgot Password</a>
-      </div>
-      <button type="submit" [disabled]="f.invalid" class="btn btn-primary">
-        Login <i class="fa-solid fa-right-to-bracket"></i>
-      </button>
-    </form>
+<div class="container center">
+  <img src="assets/Connect4Logo.svg" class="rounded mx-auto d-block logo" alt="..." />
+  <h1 class="text-center">Connect 4</h1>
+  <div class="row">
+    <div class="col-md-6 offset-md-3 mt-4">
+      <h3>Login</h3>
+      <form #f="ngForm" (ngSubmit)="onSubmit()">
+        <div class="mb-3">
+          <!-- <label for="loginUsername" class="form-label"></label> -->
+          <input type="text" name="username" [(ngModel)]="Player.Username" required #username="ngModel"
+            class="form-control" id="loginUsername" placeholder="Username" />
+        </div>
+        <div class="mb-3">
+          <!-- <label for="loginPassword" class="form-label"></label> -->
+          <input type="password" input name="password" [(ngModel)]="Player.Password" required #password="ngModel"
+            class="form-control" id="loginPassword" placeholder="Password" />
+        </div>
+        <!-- <div class="mb-3 form-check">
+          <a routerLink="['resetpassword']">Forgot Password</a>
+        </div> -->
+        <button type="submit" [disabled]="f.invalid" class="btn btn-primary">
+          Login <i class="fa-solid fa-right-to-bracket"></i>
+        </button>
+      </form>
+    </div>
   </div>
 </div>
