@@ -23,10 +23,6 @@ const routes: Routes = [
     component: SignupComponent
   },
   {
-    path: 'home',
-    component: HomeComponent
-  },
-  {
     path: 'resetpassword',
     component: ResetpasswordComponent
   },
