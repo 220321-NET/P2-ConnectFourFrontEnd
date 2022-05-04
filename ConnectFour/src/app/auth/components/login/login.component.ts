@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import { Router } from '@angular/router';
 import { player } from 'src/app/models/player';
 import { HttpService } from 'src/app/services/http.service';
@@ -27,7 +27,7 @@ export class LoginComponent implements OnInit {
 
   onSubmit() {
     this.api.getPlayer(this.Player.Username).subscribe((res) => {
-      this.router.navigate(['home'])
+      this.router.navigate(['home', this.Player.Username])
     })
   }
 
