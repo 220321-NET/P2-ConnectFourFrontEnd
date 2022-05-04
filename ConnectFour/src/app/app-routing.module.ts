@@ -31,15 +31,11 @@ const routes: Routes = [
     component: HomeComponent
   },
   {
-    path: 'rank',
-    component: RankingModalComponent
-  },
-  {
-    path: 'leaderboard',
+    path: 'leaderboard/:username',
     component: LeaderboardComponent
   },
   {
-    path: 'settings',
+    path: 'settings/:username',
     component: SettingsComponent
   }
 ];
