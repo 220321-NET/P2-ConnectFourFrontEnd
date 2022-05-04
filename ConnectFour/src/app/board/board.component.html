@@ -1,41 +1,40 @@
-
-<div class ="background">
-    <div class = "row">
-        <div class= "col-8 game">
-          <div class="btn-group foo" role="group">
-            <button type="button" class="btn btn-warning" (click)="addpiece(0)">
-            </button>
-            <button type="button" class="btn btn-warning" (click)="addpiece(1)">
-            </button>
-            <button type="button" class="btn btn-warning" (click)="addpiece(2)">
-            </button>
-            <button type="button" class="btn btn-warning" (click)="addpiece(3)">
-            </button>
-            <button type="button" class="btn btn-warning" (click)="addpiece(4)">
-            </button>
-            <button type="button" class="btn btn-warning" (click)="addpiece(5)">
-            </button>
-            <button type="button" class="btn btn-warning" (click)="addpiece(6)">
-            </button>
-          </div>
-          <div class= "background2">
-            <table>
-              <tr *ngFor = "let row of board; let r = index">
-                <td *ngFor ="let x of row;">
-                  {{x}}
-                </td>
-              </tr>
-            </table>
-          </div>
-          </div>
-        <div class = "col-4">
-            <div class="transbox">
-                <h1>How to play</h1>
-                <li>Players will alternate turns, and only one disc can be dropped each turn</li>
-                <li>When it is your turn, you will drop your disc in any of the 7 slots</li>
-                <li>A player wins if they have 4 pieces connecting in a row</li>
-                <li>Pieces can be connected horizontally, vertically or adjacently</li>
-            </div>
-        </div>
+<div class="background">
+  <div class="row">
+    <div class="col-8 game">
+      <div class="btn-group foo" role="group">
+        <button type="button" class="btn btn-warning" (click)="addpiece(0)">
+        </button>
+        <button type="button" class="btn btn-warning" (click)="addpiece(1)">
+        </button>
+        <button type="button" class="btn btn-warning" (click)="addpiece(2)">
+        </button>
+        <button type="button" class="btn btn-warning" (click)="addpiece(3)">
+        </button>
+        <button type="button" class="btn btn-warning" (click)="addpiece(4)">
+        </button>
+        <button type="button" class="btn btn-warning" (click)="addpiece(5)">
+        </button>
+        <button type="button" class="btn btn-warning" (click)="addpiece(6)">
+        </button>
+      </div>
+      <div class="background2">
+        <table>
+          <tr *ngFor="let row of board; let r = index">
+            <td *ngFor="let x of row;">
+              <app-piece [pieceUser]="currentUser"></app-piece>
+            </td>
+          </tr>
+        </table>
+      </div>
     </div>
+    <div class="col-4">
+      <div class="transbox">
+        <h1>How to play</h1>
+        <li>Players will alternate turns, and only one disc can be dropped each turn</li>
+        <li>When it is your turn, you will drop your disc in any of the 7 slots</li>
+        <li>A player wins if they have 4 pieces connecting in a row</li>
+        <li>Pieces can be connected horizontally, vertically or adjacently</li>
+      </div>
+    </div>
+  </div>
 </div>

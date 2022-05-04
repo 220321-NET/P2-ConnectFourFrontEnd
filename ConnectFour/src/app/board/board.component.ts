@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { PieceComponent } from '../piece/piece.component';
+import { ActivatedRoute } from '@angular/router';
+import { player } from '../models/player';
+import { HttpService } from '../services/http.service';
 
 
 @Component({
@@ -9,14 +11,32 @@ import { PieceComponent } from '../piece/piece.component';
 })
 export class BoardComponent implements OnInit {
 
-  board: number[][] =[[],[],[],[],[],[],[]]
+  currentUser: string = '';
 
-  constructor() { }
+  Player: player = {
+    PlayerID: 0,
+    Email: '',
+    Username: '',
+    Password: '',
+    Wins: 0,
+    Losses: 0,
+    Ties: 0
+  }
 
-  addpiece(column:number): void{
-    
-    this.board[column].push(0)
-    console.log(this.board);
+  board: number[][] = [[], [], [], [], [], [], []]
+
+  constructor(private router: ActivatedRoute, private api: HttpService) {
+    this.router.params.subscribe(params => {
+      this.currentUser = params['username'];
+      this.api.getPlayer(this.currentUser).subscribe((res) => {
+        this.Player = res.body!;
+      })
+    })
+  }
+
+  addpiece(column: number): void {
+
+    this.board[column].push(this.Player.PlayerID);
   }
   ngOnInit(): void {
   }
