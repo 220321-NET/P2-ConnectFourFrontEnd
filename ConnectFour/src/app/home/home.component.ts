@@ -31,8 +31,8 @@ export class HomeComponent implements OnInit {
 
   constructor(private api: HttpService, private route: ActivatedRoute, private _md5: Md5) {
     this.route.params.subscribe(params => {
-      this.api.getPlayer(params['username']).subscribe((res: player) => {
-        this.Player = res;
+      this.api.getPlayer(params['username']).subscribe((res) => {
+        this.Player = res.body!;
         this.getImages();
       })
     })

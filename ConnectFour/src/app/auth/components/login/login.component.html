@@ -18,7 +18,8 @@
         <!-- <div class="mb-3 form-check">
           <a routerLink="['resetpassword']">Forgot Password</a>
         </div> -->
-        <button type="submit" [disabled]="f.invalid" class="btn btn-primary">
+        <p *ngIf="errorMessage">{{errorMessage}}</p>
+        <button type=" submit" [disabled]="f.invalid" class="btn btn-primary">
           Login <i class="fa-solid fa-right-to-bracket"></i>
         </button>
       </form>
