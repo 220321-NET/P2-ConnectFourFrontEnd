@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
+import { ActivatedRoute } from '@angular/router';
 
 
 @Component({
@@ -9,7 +10,13 @@ import { NgForm } from '@angular/forms';
 })
 export class SettingsComponent implements OnInit {
 
-  constructor() { }
+  currentUser: string = '';
+
+  constructor(private router: ActivatedRoute) {
+    this.router.params.subscribe(params => {
+      this.currentUser = params['username'];
+    })
+  }
 
   ngOnInit(): void {
   }

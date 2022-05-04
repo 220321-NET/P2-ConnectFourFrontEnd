@@ -9,7 +9,7 @@ import { Router } from '@angular/router';
 export class NavbarComponent implements OnInit {
 
   @Input()
-  username: string = '';
+  username!: string;
 
   constructor(private router: Router) { }
 
@@ -17,14 +17,17 @@ export class NavbarComponent implements OnInit {
   }
 
   onHome(): void {
+    console.log(this.username);
     this.router.navigate(['home', this.username]);
   }
 
   onLeader(): void {
+    console.log(this.username);
     this.router.navigate(['leaderboard', this.username]);
   }
 
   onSettings(): void {
+    console.log(this.username);
     this.router.navigate(['settings', this.username]);
   }
 

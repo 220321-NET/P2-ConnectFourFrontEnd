@@ -27,7 +27,7 @@ export class SignupComponent implements OnInit {
 
   onSubmit() {
     this.api.addPlayer(this.Player).subscribe((res) => {
-      this.router.navigate(['home'])
+      this.router.navigate(['home', this.Player.Username]);
     })
   }
 

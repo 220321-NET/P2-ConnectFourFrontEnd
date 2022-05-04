@@ -4,16 +4,23 @@ import { MdbModalRef, MdbModalService } from 'mdb-angular-ui-kit/modal';
 import { HttpService } from '../services/http.service';
 import { player } from '../models/player';
 import { ranking } from '../models/ranking';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-leaderboard',
   templateUrl: './leaderboard.component.html',
   styleUrls: ['./leaderboard.component.css']
 })
-export class LeaderboardComponent implements OnInit{
+export class LeaderboardComponent implements OnInit {
+  currentUser: string = '';
+
   modalRef: MdbModalRef<RankingModalComponent> | null = null;
 
-  constructor(private modalService: MdbModalService, private api: HttpService) { }
+  constructor(private router: ActivatedRoute, private modalService: MdbModalService, private api: HttpService) {
+    this.router.params.subscribe(params => {
+      this.currentUser = params['username'];
+    })
+  }
 
   opacity: string = "100%"
   players: player[] = []
@@ -21,18 +28,18 @@ export class LeaderboardComponent implements OnInit{
   sortedPlayers: player[] = []
 
   getPlayers() {
-    this.api.getAllPlayers().subscribe((res : player[]) => {
+    this.api.getAllPlayers().subscribe((res: player[]) => {
       this.players = res;
     })
   }
 
   getAllPlayerRanks() {
-    this.api.getAllRanks().subscribe((res : ranking[]) => {
+    this.api.getAllRanks().subscribe((res: ranking[]) => {
       this.rankings = res;
-      for(let i = 0; i < this.rankings.length; i++) {
-        for(let j = 0; j < this.rankings.length; j++) {
+      for (let i = 0; i < this.rankings.length; i++) {
+        for (let j = 0; j < this.rankings.length; j++) {
           let tempRank: ranking;
-          if(this.rankings[i].Rank <this.rankings[j].Rank) {
+          if (this.rankings[i].Rank < this.rankings[j].Rank) {
             tempRank = this.rankings[i]
             this.rankings[i] = this.rankings[j]
             this.rankings[j] = tempRank
@@ -40,8 +47,8 @@ export class LeaderboardComponent implements OnInit{
         }
       }
 
-      for(let i = this.rankings.length - 1; i >= 0; i--) {
-        for(let j = 0; j < this.players.length; j++) {
+      for (let i = this.rankings.length - 1; i >= 0; i--) {
+        for (let j = 0; j < this.players.length; j++) {
           if (this.rankings[i].PlayerID === this.players[j].PlayerID) {
             this.sortedPlayers.push(this.players[j])
           }
@@ -54,7 +61,7 @@ export class LeaderboardComponent implements OnInit{
     this.opacity = "25%";
     this.modalRef = this.modalService.open(RankingModalComponent, {
       modalClass: 'modal-dialog-centered',
-      data : { currPlayer }
+      data: { currPlayer }
     })
     this.modalRef.onClose.subscribe((message: any) => {
       this.opacity = message;
@@ -62,7 +69,7 @@ export class LeaderboardComponent implements OnInit{
   }
 
   playerRank(playerCheck: player) {
-    for(let i = 0; i < this.rankings.length; i++) {
+    for (let i = 0; i < this.rankings.length; i++) {
       if (playerCheck.PlayerID === this.rankings[i].PlayerID) {
         return this.rankings[i].Rank;
       }
