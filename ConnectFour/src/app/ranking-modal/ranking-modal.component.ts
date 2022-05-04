@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { LeaderboardComponent } from '../leaderboard/leaderboard.component';
 import { MdbModalRef } from 'mdb-angular-ui-kit/modal';
+import { player } from '../models/player';
+import { HttpService } from '../services/http.service';
 
 @Component({
   selector: 'app-ranking-modal',
@@ -9,6 +10,12 @@ import { MdbModalRef } from 'mdb-angular-ui-kit/modal';
 })
 export class RankingModalComponent {
 
-  constructor(public modalRef: MdbModalRef<RankingModalComponent>) { }
+  currPlayer!: player;
 
+  constructor(public modalRef: MdbModalRef<RankingModalComponent>, private api: HttpService) { }
+
+  close() {
+    const opacity = "100%";
+    this.modalRef.close(opacity)
+  }
 }
