@@ -7,7 +7,7 @@
 }
 .background {
     background: url(https://media1.thehungryjpeg.com/thumbs/800_3497898_c18e9c3d259fa39144069ce250402beabefa92e7.jpg);
-    border: 60px solid black;
+    border: 50px solid black;
     height: 100%;
 }
 
@@ -20,7 +20,17 @@
      background-repeat: no-repeat;
      background-size: contain;
      min-height: 650px;
+     height:100%;
+     width: 100%;
 }
+.foo{width: 100%;}
+
+.game{height:1100px}
+
+tr {
+  width: 100%;
+}
+table{height:100%;}
 
 h1 {text-align: center;}
 li {text-align: left;}
