@@ -7,12 +7,19 @@
 }
 .background {
     background: url(https://media1.thehungryjpeg.com/thumbs/800_3497898_c18e9c3d259fa39144069ce250402beabefa92e7.jpg);
-    border: 50px solid black;
+    border: 60px solid black;
+    height: 100%;
 }
 
 .board{
     width: 100%;
 
+}
+.background2{
+     background: url(../../assets/board.svg);
+     background-repeat: no-repeat;
+     background-size: contain;
+     min-height: 650px;
 }
 
 h1 {text-align: center;}
