@@ -1,23 +1,31 @@
 <app-navbar></app-navbar>
 <div class="container">
   <div class="row mt-5">
+    <div class="d-flex justify-content-center" *ngIf="gravitar != default else noGravitar">
+      <img src={{gravitar}} style="width: 20%" class="rounded-circle" />
+    </div>
+    <ng-template #noGravitar>
+      <div class="d-flex justify-content-center">
+        <img src={{picSum}} style="width: 20%" class="rounded-circle" />
+      </div>
+    </ng-template>
+  </div>
+  <div class="row mt-3">
     <div class="d-flex justify-content-center">
-      <app-piece></app-piece>
+      <h1>{{Player.Username}}</h1>
     </div>
   </div>
   <div class="row mt-3">
     <div class="d-flex justify-content-center">
-      <h1>Bailey911</h1>
-    </div>
-  </div>
-  <div class="row mt-3">
-    <div class="d-flex justify-content-center">
-      <h4>Current Rating: 501</h4>
+      <h4>Wins: {{Player.Wins}}</h4>
+      <h4>Ties: {{Player.Ties}}</h4>
+      <h4>Losses: {{Player.Losses}}</h4>
     </div>
   </div>
   <div class="row mt-1">
     <div class="d-flex justify-content-center">
-      <button type="button" class="btn btn-primary" routerLink="/board">New Game</button>
+      <button type="button" class="btn btn-primary">New Game</button>
+      <!-- Jose is adding a button so dont mess with this till repulled BAILEY DIPSHIT!!! -->
     </div>
   </div>
 </div>

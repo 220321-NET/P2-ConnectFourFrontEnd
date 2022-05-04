@@ -6,16 +6,11 @@
     padding: 10px;
 }
 
-.error {
-    color: red;
-    font-size: 13px;
-}
-
 img {
     width: 300px;
     padding: 20px;
 }
 
-.space {
-    margin: 10px;
+p {
+    color: red;
 }

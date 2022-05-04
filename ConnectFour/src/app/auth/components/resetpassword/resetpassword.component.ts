@@ -1,13 +1,12 @@
 import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
 
-
 @Component({
-  selector: 'app-settings',
-  templateUrl: './settings.component.html',
-  styleUrls: ['./settings.component.css']
+  selector: 'app-resetpassword',
+  templateUrl: './resetpassword.component.html',
+  styleUrls: ['./resetpassword.component.css']
 })
-export class SettingsComponent implements OnInit {
+export class ResetpasswordComponent implements OnInit {
 
   constructor() { }
 
@@ -17,4 +16,5 @@ export class SettingsComponent implements OnInit {
     console.log(f.value);  // { first: '', last: '' }
     console.log(f.valid);  // false
   }
+
 }

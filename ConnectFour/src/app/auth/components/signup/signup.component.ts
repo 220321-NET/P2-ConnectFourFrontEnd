@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { player } from '../models/player';
-import { HttpService } from '../services/http.service';
+import { player } from 'src/app/models/player';
+import { HttpService } from 'src/app/services/http.service';
 
 @Component({
   selector: 'app-signup',
@@ -10,9 +10,7 @@ import { HttpService } from '../services/http.service';
 })
 export class SignupComponent implements OnInit {
 
-  passwordConfirm: string = '';
-
-  newPlayer: player = {
+  Player: player = {
     PlayerID: 0,
     Email: '',
     Username: '',
@@ -27,9 +25,10 @@ export class SignupComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  submitForm() {
-    this.api.addPlayer(this.newPlayer).subscribe((res) => {
+  onSubmit() {
+    this.api.addPlayer(this.Player).subscribe((res) => {
       this.router.navigate(['home'])
     })
   }
+
 }
