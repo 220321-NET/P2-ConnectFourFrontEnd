@@ -11,6 +11,8 @@ import { MainComponent } from './main/main.component';
 import { SettingsComponent } from './settings/settings.component';
 import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
+import { BoardComponent } from './board/board.component';
+import { PieceComponent } from './piece/piece.component';
 import { AuthModule } from './auth/auth.module';
 import { RouterModule } from '@angular/router';
 
@@ -22,7 +24,9 @@ import { RouterModule } from '@angular/router';
     HomeComponent,
     NavbarComponent,
     MainComponent,
-    SettingsComponent
+    SettingsComponent,
+    BoardComponent,
+    PieceComponent
   ],
   imports: [
     BrowserModule,

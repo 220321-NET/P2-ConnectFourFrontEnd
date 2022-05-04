@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { HomeComponent } from './home/home.component';
 import { LeaderboardComponent } from './leaderboard/leaderboard.component';
+import { BoardComponent } from './board/board.component';
 import { MainComponent } from './main/main.component';
 import { RankingModalComponent } from './ranking-modal/ranking-modal.component';
 import { SettingsComponent } from './settings/settings.component';
@@ -25,6 +26,10 @@ const routes: Routes = [
   {
     path: 'resetpassword',
     component: ResetpasswordComponent
+  },
+  {
+    path: 'board/:username',
+    component: BoardComponent
   },
   {
     path: 'home/:username',
