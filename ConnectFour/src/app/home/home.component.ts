@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { player } from '../models/player';
 import { Md5 } from 'ts-md5/dist/md5';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { HttpService } from '../services/http.service';
 
 @Component({
@@ -30,7 +30,7 @@ export class HomeComponent implements OnInit {
 
   gravitar: string = "";
 
-  constructor(private api: HttpService, private router: ActivatedRoute, private _md5: Md5) {
+  constructor(private route: Router, private api: HttpService, private router: ActivatedRoute, private _md5: Md5) {
     this.router.params.subscribe(params => {
       this.api.getPlayer(params['username']).subscribe((res) => {
         this.Player = res.body!;
@@ -48,6 +48,10 @@ export class HomeComponent implements OnInit {
     this.gravitar = `https://www.gravatar.com/avatar/${hash}`;
     this.picSum = `https://picsum.photos/id/${this.Player.PlayerID}/300`;
     this.currentUser = this.Player.Username;
+  }
+
+  gotoBoard(): void {
+    this.route.navigate(['board', this.currentUser]);
   }
 
 }

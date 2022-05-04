@@ -17,17 +17,14 @@ export class NavbarComponent implements OnInit {
   }
 
   onHome(): void {
-    console.log(this.username);
     this.router.navigate(['home', this.username]);
   }
 
   onLeader(): void {
-    console.log(this.username);
     this.router.navigate(['leaderboard', this.username]);
   }
 
   onSettings(): void {
-    console.log(this.username);
     this.router.navigate(['settings', this.username]);
   }
 
