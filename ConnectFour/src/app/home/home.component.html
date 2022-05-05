@@ -1,7 +1,7 @@
 <app-navbar [username]="currentUser"></app-navbar>
 <div class="container">
   <div class="row mt-5">
-    <div class="d-flex justify-content-center" *ngIf="gravitar != default else noGravitar">
+    <div class="d-flex justify-content-center" *ngIf="gravitar else noGravitar">
       <img src={{gravitar}} style="width: 20%" class="rounded-circle" />
     </div>
     <ng-template #noGravitar>

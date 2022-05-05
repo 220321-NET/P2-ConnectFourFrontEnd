@@ -5,6 +5,7 @@ import { HttpService } from '../services/http.service';
 import { player } from '../models/player';
 import { ranking } from '../models/ranking';
 import { ActivatedRoute } from '@angular/router';
+import { Md5 } from 'ts-md5/dist/md5';
 
 @Component({
   selector: 'app-leaderboard',
@@ -26,6 +27,7 @@ export class LeaderboardComponent implements OnInit {
   players: player[] = []
   rankings: ranking[] = []
   sortedPlayers: player[] = []
+  sortedImages: string[] = []
 
   getPlayers() {
     this.api.getAllPlayers().subscribe((res: player[]) => {
@@ -50,9 +52,13 @@ export class LeaderboardComponent implements OnInit {
       for (let i = this.rankings.length - 1; i >= 0; i--) {
         for (let j = 0; j < this.players.length; j++) {
           if (this.rankings[i].PlayerID === this.players[j].PlayerID) {
-            this.sortedPlayers.push(this.players[j])
+            this.sortedPlayers.push(this.players[j]);
           }
         }
+      }
+
+      for (let i = 0; i < this.sortedPlayers.length; i++) {
+        this.getImages(this.players[i].Email, this.players[i].PlayerID);
       }
     })
   }
@@ -80,6 +86,20 @@ export class LeaderboardComponent implements OnInit {
   ngOnInit(): void {
     this.getPlayers();
     this.getAllPlayerRanks();
+  }
+
+  getImages(email: string, id: number): void {
+    let hash = Md5.hashStr(email);
+    this.api.getGravitar(hash).subscribe({
+      'error': (err) => {
+        if (err.status === 200) {
+          this.sortedImages.push(err.url);
+        }
+        else {
+          this.sortedImages.push(`https://picsum.photos/id/${id}/300`);
+        }
+      }
+    });
   }
 
 }

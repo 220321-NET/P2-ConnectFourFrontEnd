@@ -11,7 +11,7 @@ import { Md5 } from 'ts-md5/dist/md5';
 export class PieceComponent implements OnInit {
 
   @Input()
-  pieceUser!: string;
+  pieceUser: string = '';
 
   Player: player = {
     PlayerID: 0,
