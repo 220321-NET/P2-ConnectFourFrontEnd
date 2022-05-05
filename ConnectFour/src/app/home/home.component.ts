@@ -1,4 +1,4 @@
-import { Component, OnInit, Output } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { player } from '../models/player';
 import { Md5 } from 'ts-md5/dist/md5';
 import { ActivatedRoute, Router } from '@angular/router';
@@ -24,8 +24,6 @@ export class HomeComponent implements OnInit {
   currentUser: string = '';
 
   picSum: string = "";
-
-  default: string = "https://www.gravatar.com/avatar/d41d8cd98f00b204e9800998ecf8427e";
 
   gravitar: string = "";
 
