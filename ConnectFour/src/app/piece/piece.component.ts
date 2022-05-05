@@ -25,26 +25,27 @@ export class PieceComponent implements OnInit {
 
   picSum: string = "";
 
-  default: string = "https://www.gravatar.com/avatar/d41d8cd98f00b204e9800998ecf8427e";
-
   gravitar: string = "";
 
   constructor(private api: HttpService) {
-    console.log(this.pieceUser);
-    this.api.getPlayer(this.pieceUser).subscribe((res) => {
+  }
+
+  ngOnInit(): void {
+    this.api.getPlayerbyId(Number(this.pieceUser)).subscribe((res) => {
       this.Player = res.body!;
       this.getImages();
     })
   }
 
-  ngOnInit(): void {
-  }
-
   getImages(): void {
     let hash = Md5.hashStr(this.Player.Email);
-    this.gravitar = `https://www.gravatar.com/avatar/${hash}`;
+    this.api.getGravitar(hash).subscribe({
+      'error': (err) => {
+        if (err.status === 200)
+          this.gravitar = err.url;
+      }
+    });
     this.picSum = `https://picsum.photos/id/${this.Player.PlayerID}/300`;
-    this.pieceUser = this.Player.Username;
   }
 
 }

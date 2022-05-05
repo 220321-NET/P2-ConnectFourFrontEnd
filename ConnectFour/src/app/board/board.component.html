@@ -1,30 +1,13 @@
 <div class="background">
   <div class="row">
     <div class="col-8 game">
-      <div class="btn-group foo" role="group">
-        <button type="button" class="btn btn-warning" (click)="addpiece(0)">
-        </button>
-        <button type="button" class="btn btn-warning" (click)="addpiece(1)">
-        </button>
-        <button type="button" class="btn btn-warning" (click)="addpiece(2)">
-        </button>
-        <button type="button" class="btn btn-warning" (click)="addpiece(3)">
-        </button>
-        <button type="button" class="btn btn-warning" (click)="addpiece(4)">
-        </button>
-        <button type="button" class="btn btn-warning" (click)="addpiece(5)">
-        </button>
-        <button type="button" class="btn btn-warning" (click)="addpiece(6)">
-        </button>
-      </div>
-      <div class="background2">
-        <table>
-          <tr *ngFor="let row of board; let r = index">
-            <td *ngFor="let x of row;">
-              <app-piece [pieceUser]="currentUser"></app-piece>
-            </td>
-          </tr>
-        </table>
+      <div class="wrapper">
+        <ng-container *ngFor="let row of board; let r = index">
+          <ng-container *ngFor="let playerid of row; let c = index">
+            <div class="box" [ngStyle]="{'background-color':getPlayerColor(playerid)}" (click)="addPiece(c)">
+            </div>
+          </ng-container>
+        </ng-container>
       </div>
     </div>
     <div class="col-4">

@@ -23,6 +23,12 @@ export class HttpService {
     });
   }
 
+  getPlayerbyId(playerid: number): Observable<HttpResponse<player>> {
+    return this.http.get<player>(`https://connectfourapi.azurewebsites.net/Player/GetPlayerbyId/${playerid}`, {
+      'observe': 'response'
+    });
+  }
+
   addPlayer(p: Partial<player>): Observable<any> {
     return this.http.post('https://connectfourapi.azurewebsites.net/Player/AddPlayer', p);
 

@@ -1,4 +1,4 @@
-<div class="d-flex justify-content-center" *ngIf="(gravitar != default && gravitar) else noGravitar">
+<div class="d-flex justify-content-center" *ngIf="gravitar else noGravitar">
     <img src={{gravitar}} class="rounded-circle" />
 </div>
 <ng-template #noGravitar>
