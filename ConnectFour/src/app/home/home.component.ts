@@ -1,15 +1,13 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { player } from '../models/player';
 import { Md5 } from 'ts-md5/dist/md5';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { HttpService } from '../services/http.service';
-import { waitForAsync } from '@angular/core/testing';
 
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
-  styleUrls: ['./home.component.css'],
-  providers: [Md5]
+  styleUrls: ['./home.component.css']
 })
 export class HomeComponent implements OnInit {
 
@@ -23,14 +21,14 @@ export class HomeComponent implements OnInit {
     Ties: 0
   }
 
-  picSum: string = "";
+  currentUser: string = '';
 
-  default: string = "https://www.gravatar.com/avatar/d41d8cd98f00b204e9800998ecf8427e";
+  picSum: string = "";
 
   gravitar: string = "";
 
-  constructor(private api: HttpService, private route: ActivatedRoute, private _md5: Md5) {
-    this.route.params.subscribe(params => {
+  constructor(private route: Router, private api: HttpService, private router: ActivatedRoute) {
+    this.router.params.subscribe(params => {
       this.api.getPlayer(params['username']).subscribe((res) => {
         this.Player = res.body!;
         this.getImages();
@@ -39,12 +37,23 @@ export class HomeComponent implements OnInit {
   }
 
   ngOnInit(): void {
+
   }
 
   getImages(): void {
     let hash = Md5.hashStr(this.Player.Email);
-    this.gravitar = `https://www.gravatar.com/avatar/${hash}`;
+    this.api.getGravitar(hash).subscribe({
+      'error': (err) => {
+        if (err.status === 200)
+          this.gravitar = err.url;
+      }
+    });
     this.picSum = `https://picsum.photos/id/${this.Player.PlayerID}/300`;
+    this.currentUser = this.Player.Username;
+  }
+
+  gotoBoard(): void {
+    this.route.navigate(['board', this.currentUser]);
   }
 
 }

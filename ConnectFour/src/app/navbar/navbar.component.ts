@@ -9,7 +9,7 @@ import { Router } from '@angular/router';
 export class NavbarComponent implements OnInit {
 
   @Input()
-  username: string = '';
+  username!: string;
 
   constructor(private router: Router) { }
 

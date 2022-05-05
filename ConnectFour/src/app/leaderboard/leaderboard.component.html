@@ -1,6 +1,7 @@
-<app-navbar></app-navbar>
+<app-navbar [username]="currentUser"></app-navbar>
 <div class="container" [ngStyle]="{'opacity': opacity}">
-  <h1 class="d-flex justify-content-center mt-5 mb-3" style="color:crimson;">Connect <span style="color:gold">4</span> Leaderboard</h1>
+  <h1 class="d-flex justify-content-center mt-5 mb-3" style="color:crimson;">Connect <span style="color:gold">4</span>
+    Leaderboard</h1>
   <div class="card border rounded-3" style="background-color:rgb(0, 102, 255)">
     <div class="card-body border border-5 rounded-2 border-danger">
       <table class="table table-responsive table-hover text-white">
@@ -14,9 +15,12 @@
         </thead>
         <tbody class="h3">
           <!-- Add each Player's rank via GET request -->
-          <tr *ngFor="let player of sortedPlayers; let i=index;" class="border-3 border-end-0 border-start-0 border-danger" (click)="openRankingModal(player)">
+          <tr *ngFor="let player of sortedPlayers; let i=index;"
+            class="border-3 border-end-0 border-start-0 border-danger" (click)="openRankingModal(player)">
             <th scope="row">#{{i + 1}}</th>
-            <td><img src="https://s.gravatar.com/avatar/24906c8e5a8e02463f6ea9411285d78b?s=80" style="width: 29pt;" class="rounded-circle"/> {{ player.Username }}</td>
+            <td>
+              <img src={{sortedImages[i]}} style="width: 29pt;" class="rounded-circle" /> {{ player.Username}}
+            </td>
             <td>{{ playerRank(player) }}</td>
           </tr>
         </tbody>

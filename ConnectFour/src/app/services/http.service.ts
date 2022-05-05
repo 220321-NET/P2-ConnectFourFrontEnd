@@ -11,8 +11,20 @@ export class HttpService {
 
   constructor(private http: HttpClient) { }
 
+  getGravitar(hash: string): Observable<HttpResponse<any>> {
+    return this.http.get<string>(`https://www.gravatar.com/avatar/${hash}?d=404`, {
+      'observe': 'response'
+    });
+  }
+
   getPlayer(username: string): Observable<HttpResponse<player>> {
     return this.http.get<player>(`https://connectfourapi.azurewebsites.net/Player/GetPlayer/${username}`, {
+      'observe': 'response'
+    });
+  }
+
+  getPlayerbyId(playerid: number): Observable<HttpResponse<player>> {
+    return this.http.get<player>(`https://connectfourapi.azurewebsites.net/Player/GetPlayerbyId/${playerid}`, {
       'observe': 'response'
     });
   }
