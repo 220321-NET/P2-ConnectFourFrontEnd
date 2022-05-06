@@ -1,5 +1,12 @@
 <div class="modal-header">
-    <h5 class="modal-title" id="exampleModalLabel">{{ winnerName }} has won the battle!</h5>
+    <div *ngIf="winnerName else noWinner">
+        <h5 class="modal-title" id="exampleModalLabel">{{ winnerName }} has won the battle!</h5>
+    </div>
+    <ng-template #noWinner>
+        <div class="d-flex justify-content-center">
+            <h5 class="modal-title" id="exampleModalLabel">No one has won the battle!</h5>
+        </div>
+    </ng-template>
     <button type="button" class="btn-close" aria-label="Close" (click)="modalRef.close()"></button>
 </div>
 <div class="modal-footer">

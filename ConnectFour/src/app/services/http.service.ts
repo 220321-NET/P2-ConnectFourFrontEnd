@@ -40,6 +40,10 @@ export class HttpService {
     return this.http.get<player>('https://connectfourapi.azurewebsites.net/Player/GetAllPlayers');
   }
 
+  updatePlayer(p: Partial<player>): Observable<unknown> {
+    return this.http.put('https://connectfourapi.azurewebsites.net/Player/UpdatePlayer', p);
+  }
+
   getAllRanks(): Observable<any> {
     return this.http.get<ranking>('https://connectfourapi.azurewebsites.net/api/Ranking/GetAllPlayerRanks');
   }

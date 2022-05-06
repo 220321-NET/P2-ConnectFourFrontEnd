@@ -71,6 +71,20 @@ export class BoardComponent implements OnInit {
   constructor(private route: Router, private router: ActivatedRoute, private api: HttpService, private modalService: MdbModalService) {
   }
 
+  checkifFullBoard(): boolean {
+    let count = 0;
+    for (let i = 0; i < this.board.length; i++) {
+      for (let j = 0; j < this.board[i].length; j++) {
+        if (this.board[i][j] != -1)
+          count++;
+      }
+    }
+    if (count != 42)
+      return false;
+    else
+      return true;
+  }
+
   addPiece(column: number): void {
     this.changeTurn();
     if (this.winner == -1) {
@@ -82,6 +96,10 @@ export class BoardComponent implements OnInit {
             this.winner = this.checkWin();
             if (this.winner != -1) {
               this.displayWinner(this.winnerName);
+            } else if (this.checkifFullBoard()) {
+              console.log("tie");
+              this.getWinnerName(this.currentPlayer);
+              this.displayWinner(this.winnerName);
             }
             return;
           }
@@ -91,6 +109,10 @@ export class BoardComponent implements OnInit {
           this.board[r][column] = this.currentPlayer;
           this.winner = this.checkWin();
           if (this.winner != -1) {
+            this.displayWinner(this.winnerName);
+          } else if (this.checkifFullBoard()) {
+            console.log("tie");
+            this.getWinnerName(this.currentPlayer);
             this.displayWinner(this.winnerName);
           }
         }
@@ -141,8 +163,9 @@ export class BoardComponent implements OnInit {
     })
   }
 
-  updateBoardtoDB(): void {
-    this.api.updateBoard(this.Board).subscribe();
+  updatePlayerstoDB(): void {
+    this.api.updatePlayer(this.Player1).subscribe();
+    this.api.updatePlayer(this.Player2).subscribe();
   }
 
   changeTurn(): void {
@@ -166,11 +189,21 @@ export class BoardComponent implements OnInit {
 
   getWinnerName(winner: number): void {
     this.Board.PlayerID = winner;
-    this.updateBoardtoDB();
-    if (winner === this.Player1.PlayerID)
+    this.api.updateBoard(this.Board).subscribe();
+    if (winner === this.Player1.PlayerID) {
       this.winnerName = this.Player1.Username;
-    else
+      this.Player1.Wins = this.Player1.Wins + 1;
+      this.Player2.Losses = this.Player2.Losses + 1;
+    }
+    else if (winner === this.Player2.PlayerID) {
       this.winnerName = this.Player2.Username;
+      this.Player2.Wins = this.Player2.Wins + 1;
+      this.Player1.Losses = this.Player1.Losses + 1;
+    } else {
+      this.Player1.Ties = this.Player1.Ties + 1;
+      this.Player2.Ties = this.Player2.Ties + 1;
+    }
+    this.updatePlayerstoDB();
   }
 
   checkWin(): number {
