@@ -48,7 +48,15 @@ export class HttpService {
     return this.http.post<lobby>('https://connectfourapi.azurewebsites.net/api/Lobby', l);
   }
 
+  getLobby(lobbyid: number): Observable<lobby> {
+    return this.http.get<lobby>(`https://connectfourapi.azurewebsites.net/api/Lobby/${lobbyid}`);
+  }
+
   addBoard(b: Partial<board>): Observable<board> {
     return this.http.post<board>('https://connectfourapi.azurewebsites.net/api/Board', b);
+  }
+
+  updateBoard(b: Partial<board>): void {
+    this.http.put('https://connectfourapi.azurewebsites.net/api/Board', b);
   }
 }
