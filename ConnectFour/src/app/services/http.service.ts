@@ -56,7 +56,7 @@ export class HttpService {
     return this.http.post<board>('https://connectfourapi.azurewebsites.net/api/Board', b);
   }
 
-  updateBoard(b: Partial<board>): void {
-    this.http.put('https://connectfourapi.azurewebsites.net/api/Board', b);
+  updateBoard(b: Partial<board>): Observable<unknown> {
+    return this.http.put('https://connectfourapi.azurewebsites.net/api/Board', b);
   }
 }
