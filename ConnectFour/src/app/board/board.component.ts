@@ -50,7 +50,7 @@ export class BoardComponent implements OnInit {
 
   Board: board = {
     BoardID: 0,
-    WinID: -5,
+    PlayerID: -5,
     LobbyID: 0
   }
 
@@ -141,6 +141,10 @@ export class BoardComponent implements OnInit {
     })
   }
 
+  updateBoardtoDB(): void {
+    this.api.updateBoard(this.Board).subscribe();
+  }
+
   changeTurn(): void {
     if (this.currentPlayer === -1)
       this.currentPlayer = this.Player1.PlayerID
@@ -161,6 +165,8 @@ export class BoardComponent implements OnInit {
   }
 
   getWinnerName(winner: number): void {
+    this.Board.PlayerID = winner;
+    this.updateBoardtoDB();
     if (winner === this.Player1.PlayerID)
       this.winnerName = this.Player1.Username;
     else
