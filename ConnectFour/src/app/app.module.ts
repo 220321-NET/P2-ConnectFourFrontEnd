@@ -15,6 +15,8 @@ import { BoardComponent } from './board/board.component';
 import { PieceComponent } from './piece/piece.component';
 import { AuthModule } from './auth/auth.module';
 import { RouterModule } from '@angular/router';
+import { WinnerComponent } from './winner/winner.component';
+import { InGameLoginComponent } from './in-game-login/in-game-login.component';
 
 @NgModule({
   declarations: [
@@ -26,7 +28,9 @@ import { RouterModule } from '@angular/router';
     MainComponent,
     SettingsComponent,
     BoardComponent,
-    PieceComponent
+    PieceComponent,
+    WinnerComponent,
+    InGameLoginComponent
   ],
   imports: [
     BrowserModule,

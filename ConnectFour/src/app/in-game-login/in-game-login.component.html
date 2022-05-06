@@ -1,0 +1,15 @@
+<div class="modal-header">
+    <h5 class="modal-title" id="exampleModalLabel">Player 2 has not logged in!</h5>
+    <button type="button" class="btn-close" aria-label="Close" (click)="modalRef.close()"></button>
+</div>
+<div class="body">
+    <form #f="ngForm">
+        <div class="mb-3">
+            <input type="text" name="username" [(ngModel)]="player2Username" required #username="ngModel"
+                class="form-control" id="loginUsername" placeholder="Username" />
+        </div>
+    </form>
+    <button type="submit" class="btn btn-warning" (click)="submit()">
+        Login
+    </button>
+</div>
