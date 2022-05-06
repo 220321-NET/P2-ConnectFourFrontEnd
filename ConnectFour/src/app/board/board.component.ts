@@ -98,7 +98,7 @@ export class BoardComponent implements OnInit {
               this.displayWinner(this.winnerName);
             } else if (this.checkifFullBoard()) {
               console.log("tie");
-              this.getWinnerName(this.currentPlayer);
+              this.getWinnerName(-1);
               this.displayWinner(this.winnerName);
             }
             return;
@@ -112,7 +112,7 @@ export class BoardComponent implements OnInit {
             this.displayWinner(this.winnerName);
           } else if (this.checkifFullBoard()) {
             console.log("tie");
-            this.getWinnerName(this.currentPlayer);
+            this.getWinnerName(-1);
             this.displayWinner(this.winnerName);
           }
         }
