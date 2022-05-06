@@ -35,10 +35,9 @@ p {
     margin: 0px;
 }
 
-.red {
-    background-color: red;
-}
-
-.yellow {
-    background-color: yellow;
+.background {
+    background: url(https://media1.thehungryjpeg.com/thumbs/800_3497898_c18e9c3d259fa39144069ce250402beabefa92e7.jpg);
+    border: 50px solid black;
+    height: 100%;
+    padding: 20px;
 }
