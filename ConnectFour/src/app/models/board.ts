@@ -1,5 +1,5 @@
 export interface board {
     BoardID: number,
-    WinID: number,
+    PlayerID: number,
     LobbyID: number
 }
