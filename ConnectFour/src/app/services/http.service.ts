@@ -3,6 +3,8 @@ import { HttpClient, HttpResponse } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { player } from '../models/player';
 import { ranking } from '../models/ranking';
+import { lobby } from '../models/lobby';
+import { board } from '../models/board';
 
 @Injectable({
   providedIn: 'root'
@@ -40,5 +42,13 @@ export class HttpService {
 
   getAllRanks(): Observable<any> {
     return this.http.get<ranking>('https://connectfourapi.azurewebsites.net/api/Ranking/GetAllPlayerRanks');
+  }
+
+  addLobby(l: Partial<lobby>): Observable<lobby> {
+    return this.http.post<lobby>('https://connectfourapi.azurewebsites.net/api/Lobby', l);
+  }
+
+  addBoard(b: Partial<board>): Observable<board> {
+    return this.http.post<board>('https://connectfourapi.azurewebsites.net/api/Board', b);
   }
 }
