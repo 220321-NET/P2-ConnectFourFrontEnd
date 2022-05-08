@@ -9,7 +9,6 @@
           </ng-container>
         </ng-container>
       </div>
-      <p>{{currentPlayer}}</p>
     </div>
     <div class="col-4">
       <div class="transbox">
@@ -19,6 +18,8 @@
         <li>A player wins if they have 4 pieces connecting in a row</li>
         <li>Pieces can be connected horizontally, vertically or adjacently</li>
       </div>
+      <h3>Current Player's Turn:</h3>
+      <div class="turn" [ngStyle]="{'background-color':getNextPlayerColor(currentPlayer)}"></div>
     </div>
   </div>
 </div>

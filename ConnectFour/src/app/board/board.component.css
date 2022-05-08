@@ -5,7 +5,8 @@
     border: 1px solid black;
 }
 
-h1 {
+h1,
+h3 {
     text-align: center;
 }
 
@@ -27,6 +28,14 @@ li {
 .box {
     background-color: rgb(255, 255, 255);
     border-radius: 100%;
+}
+
+.turn {
+    background-color: red;
+    border-radius: 100%;
+    width: 100px;
+    height: 100px;
+    margin: 30px auto;
 }
 
 p {

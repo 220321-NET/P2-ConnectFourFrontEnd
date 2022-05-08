@@ -187,6 +187,14 @@ export class BoardComponent implements OnInit {
     return 'white';
   }
 
+  getNextPlayerColor(playerid: number): string {
+    if (playerid === this.Player1.PlayerID)
+      return this.Player2color;
+    else if (playerid === this.Player2.PlayerID)
+      return this.Player1color;
+    return 'red';
+  }
+
   getWinnerName(winner: number): void {
     this.Board.PlayerID = winner;
     this.api.updateBoard(this.Board).subscribe();
