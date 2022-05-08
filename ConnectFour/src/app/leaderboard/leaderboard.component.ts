@@ -58,7 +58,7 @@ export class LeaderboardComponent implements OnInit {
       }
 
       for (let i = 0; i < this.sortedPlayers.length; i++) {
-        this.getImages(this.players[i].Email, this.players[i].PlayerID);
+        this.getImages(this.sortedPlayers[i].Email, this.sortedPlayers[i].PlayerID);
       }
     })
   }
@@ -92,6 +92,7 @@ export class LeaderboardComponent implements OnInit {
     let hash = Md5.hashStr(email);
     this.api.getGravitar(hash).subscribe({
       'error': (err) => {
+        setTimeout(() => { this.getImages }, 5000)
         if (err.status === 200) {
           this.sortedImages.push(err.url);
         }
