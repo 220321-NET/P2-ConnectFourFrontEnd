@@ -72,7 +72,7 @@ export class HttpService {
     return this.http.get(`https://connectfourapi.azurewebsites.net/api/Ranking/GetPlayerRank/${id}`);
   }
 
-  getFullRank(id: number): Observable<any> {
+  getFullRank(id: number): Observable<ranking> {
     return this.http.get<ranking>(`https://connectfourapi.azurewebsites.net/api/Ranking/GetRank/${id}`);
   }
 }
