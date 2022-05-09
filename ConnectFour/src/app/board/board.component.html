@@ -19,6 +19,8 @@
         <li>Pieces can be connected horizontally, vertically or adjacently</li>
       </div>
       <h3>Current Player's Turn:</h3>
+      <h4 style="text-align:center;" *ngIf="currentPlayer == Player1.PlayerID">{{ Player2.Username }}</h4>
+      <h4 style="text-align:center;" *ngIf="currentPlayer == Player2.PlayerID">{{ Player1.Username }}</h4>
       <div class="turn" [ngStyle]="{'background-color':getNextPlayerColor(currentPlayer)}"></div>
     </div>
   </div>

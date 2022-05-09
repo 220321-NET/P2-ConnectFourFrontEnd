@@ -10,7 +10,7 @@
           <tr class="h2">
             <th scope="col">Rank</th>
             <th scope="col">Name</th>
-            <th scope="col">Rating</th>
+            <!-- <th scope="col">Rating</th> -->
           </tr>
         </thead>
         <tbody class="h3">
@@ -19,9 +19,9 @@
             class="border-3 border-end-0 border-start-0 border-danger" (click)="openRankingModal(player)">
             <th scope="row">#{{i + 1}}</th>
             <td>
-              <img src={{sortedImages[i]}} style="width: 29pt;" class="rounded-circle" /> {{ player.Username}}
+              <img src={{sortedImages[i]}} style="width: 29pt;" class="rounded-circle" /> {{ player.Username }}
             </td>
-            <td>{{ playerRank(player) }}</td>
+            <!-- <td>{{ playerRank(player) }}</td> -->
           </tr>
         </tbody>
       </table>

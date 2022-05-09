@@ -63,4 +63,16 @@ export class HttpService {
   updateBoard(b: Partial<board>): Observable<unknown> {
     return this.http.put('https://connectfourapi.azurewebsites.net/api/Board', b);
   }
+
+  updateRank(r: Partial<ranking>): Observable<unknown> {
+    return this.http.put('https://connectfourapi.azurewebsites.net/api/Ranking', r);
+  }
+
+  getPlayerRank(id: number): Observable<any> {
+    return this.http.get(`https://connectfourapi.azurewebsites.net/api/Ranking/GetPlayerRank/${id}`);
+  }
+
+  getFullRank(id: number): Observable<any> {
+    return this.http.get<ranking>(`https://connectfourapi.azurewebsites.net/api/Ranking/GetRank/${id}`);
+  }
 }

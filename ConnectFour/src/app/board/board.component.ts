@@ -5,6 +5,7 @@ import { InGameLoginComponent } from '../in-game-login/in-game-login.component';
 import { board } from '../models/board';
 import { lobby } from '../models/lobby';
 import { player } from '../models/player';
+import { ranking } from '../models/ranking';
 import { HttpService } from '../services/http.service';
 import { WinnerComponent } from '../winner/winner.component';
 
@@ -32,6 +33,12 @@ export class BoardComponent implements OnInit {
   }
   Player1color: string = 'red';
 
+  Player1Rank: ranking = {
+    RankingID: -10,
+    PlayerID: -10,
+    Rank: 0
+  }
+
   Player2: player = {
     PlayerID: -10,
     Email: '',
@@ -42,6 +49,12 @@ export class BoardComponent implements OnInit {
     Ties: 0
   }
   Player2color: string = 'yellow';
+
+  Player2Rank: ranking = {
+    RankingID: -10,
+    PlayerID: -10,
+    Rank: 0
+  }
 
   Lobby: lobby = {
     LobbyID: 0,
@@ -166,6 +179,8 @@ export class BoardComponent implements OnInit {
   updatePlayerstoDB(): void {
     this.api.updatePlayer(this.Player1).subscribe();
     this.api.updatePlayer(this.Player2).subscribe();
+    this.api.updateRank(this.Player1Rank).subscribe();
+    this.api.updateRank(this.Player2Rank).subscribe();
   }
 
   changeTurn(): void {
@@ -196,20 +211,45 @@ export class BoardComponent implements OnInit {
   }
 
   getWinnerName(winner: number): void {
+    this.api.getFullRank(this.Player1.PlayerID).subscribe((res) => {
+      this.Player1Rank = res;
+    })
+    this.api.getFullRank(this.Player2.PlayerID).subscribe((res) => {
+      this.Player2Rank = res;
+    })
     this.Board.PlayerID = winner;
     this.api.updateBoard(this.Board).subscribe();
     if (winner === this.Player1.PlayerID) {
       this.winnerName = this.Player1.Username;
       this.Player1.Wins = this.Player1.Wins + 1;
       this.Player2.Losses = this.Player2.Losses + 1;
+
+      if(this.Player2Rank.Rank < 16) {
+        this.Player2Rank.Rank = 0;
+      } else {
+        this.Player2Rank.Rank -= 15;
+      }
+      this.Player1Rank.Rank += 25;
+
     }
     else if (winner === this.Player2.PlayerID) {
       this.winnerName = this.Player2.Username;
       this.Player2.Wins = this.Player2.Wins + 1;
       this.Player1.Losses = this.Player1.Losses + 1;
+
+      if(this.Player1Rank.Rank < 16) {
+        this.Player1Rank.Rank = 0;
+      } else {
+        this.Player1Rank.Rank -= 15;
+      }
+      this.Player2Rank.Rank += 25;
+
     } else {
       this.Player1.Ties = this.Player1.Ties + 1;
       this.Player2.Ties = this.Player2.Ties + 1;
+
+      this.Player1Rank.Rank += 10;
+      this.Player2Rank.Rank += 10;
     }
     this.updatePlayerstoDB();
   }
@@ -290,6 +330,7 @@ export class BoardComponent implements OnInit {
       this.currentUser = params['username'];
       this.api.getPlayer(this.currentUser).subscribe((res) => {
         this.Player1 = res.body!;
+        this.Player1Rank.PlayerID = this.Player1.PlayerID;
       })
     })
     this.displayPlayer2Login();
