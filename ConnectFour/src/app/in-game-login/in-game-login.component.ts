@@ -13,17 +13,28 @@ export class InGameLoginComponent implements OnInit {
 
   player2Username!: string;
   player2!: player;
+  errorMessage = '';
 
-  constructor(private api: HttpService, public modalRef: MdbModalRef<WinnerComponent>) { }
+  constructor(private api: HttpService, public modalRef: MdbModalRef<InGameLoginComponent>) { }
 
   ngOnInit(): void {
   }
 
   submit() {
-    this.api.getPlayer(this.player2Username).subscribe((res) => {
-      this.player2 = res.body!;
-      this.modalRef.close(this.player2);
-    })
+    this.api.getPlayer(this.player2Username).subscribe({
+      'next': (res) => {
+        if (res.status === 200) {
+          this.player2 = res.body!;
+          this.modalRef.close(this.player2);
+        }
+        if (res.status === 204) {
+          this.errorMessage = "User does not exist!";
+        }
+      },
+      'error': (err) => {
+        this.errorMessage = err.error;
+      }
+    });
   }
 
 }

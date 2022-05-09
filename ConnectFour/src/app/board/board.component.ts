@@ -19,6 +19,7 @@ export class BoardComponent implements OnInit {
   modalRef: MdbModalRef<WinnerComponent> | null = null;
 
   currentUser: string = '';
+  errorMessage: string = '';
 
   Player1: player = {
     PlayerID: -10,
@@ -144,7 +145,6 @@ export class BoardComponent implements OnInit {
       this.opacity = "100%";
       this.addLobbytoDB();
     })
-
   }
 
   addLobbytoDB(): void {

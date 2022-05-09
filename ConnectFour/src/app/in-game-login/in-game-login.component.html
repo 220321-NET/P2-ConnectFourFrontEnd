@@ -1,6 +1,5 @@
 <div class="modal-header">
     <h5 class="modal-title" id="exampleModalLabel">Player 2 has not logged in!</h5>
-    <button type="button" class="btn-close" aria-label="Close" (click)="modalRef.close()"></button>
 </div>
 <div class="body">
     <form #f="ngForm">
@@ -12,4 +11,5 @@
     <button type="submit" class="btn btn-warning" (click)="submit()">
         Login
     </button>
+    <p style="display: inline-block; margin-left: 10pt; color:brown;" *ngIf="errorMessage">{{errorMessage}}</p>
 </div>
