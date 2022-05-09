@@ -179,8 +179,6 @@ export class BoardComponent implements OnInit {
   updatePlayerstoDB(): void {
     this.api.updatePlayer(this.Player1).subscribe();
     this.api.updatePlayer(this.Player2).subscribe();
-    this.api.updateRank(this.Player1Rank).subscribe();
-    this.api.updateRank(this.Player2Rank).subscribe();
   }
 
   changeTurn(): void {
@@ -251,6 +249,8 @@ export class BoardComponent implements OnInit {
       this.Player1Rank.Rank += 10;
       this.Player2Rank.Rank += 10;
     }
+    this.api.updateRank(this.Player1Rank).subscribe();
+    this.api.updateRank(this.Player2Rank).subscribe();
     this.updatePlayerstoDB();
   }
 
