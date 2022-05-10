@@ -110,4 +110,4 @@ Ranking
 
 ![P2-ERD](https://github.com/220321-NET/P2-ConnectFour/blob/main/P2-Connect4-ERD.jpeg?raw=true)
 
-[ConnectFour-BackEnd](https://github.com/220321-NET/P2-ConnectFourBackEnd)
+Link to backend Repository: [ConnectFour-BackEnd](https://github.com/220321-NET/P2-ConnectFourBackEnd)
