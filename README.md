@@ -2,7 +2,10 @@
 
 ## <b>Overview</b>
 
-Your childhood game of Connect4 makes its comeback. Call your friends and get ready to battle it out for the number 1 spot. Players will be ranked for all to see their genius.
+Your childhood game of Connect Four makes its comeback. Call your friends and get ready to battle it out for the number 1 spot on the leaderboards. 
+This Web Application allows a user to play a game of Connect 4 against others locally all on a visually sleek bootstrap-based UI. The User will be
+able to: Create an account, attach a Gravatar image for their profile, see their wins/ties/losses, check the leaderboards to see how others are doing,
+and most importantly play a game of Connect Four!
 
 ## <b>User Stories</b>
 
