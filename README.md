@@ -7,6 +7,8 @@ This Web Application allows a user to play a game of Connect 4 against others lo
 able to: Create an account, attach a Gravatar image for their profile, see their wins/ties/losses, check the leaderboards to see how others are doing,
 and most importantly play a game of Connect Four!
 
+Link to backend Repository: [ConnectFour-BackEnd](https://github.com/220321-NET/P2-ConnectFourBackEnd)
+
 ## <b>User Stories</b>
 
 The user should be able to sign up and login
@@ -109,5 +111,3 @@ Ranking
 ## <b>ERD</b>
 
 ![P2-ERD](https://github.com/220321-NET/P2-ConnectFour/blob/main/P2-Connect4-ERD.jpeg?raw=true)
-
-Link to backend Repository: [ConnectFour-BackEnd](https://github.com/220321-NET/P2-ConnectFourBackEnd)
